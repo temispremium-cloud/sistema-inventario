@@ -34,7 +34,7 @@ El stock no es una columna: se calcula sumando las entradas y restando las salid
 
 1. Clonar el repositorio y entrar a la carpeta:
 
-        git clone URL_DEL_REPOSITORIO
+        git clone https://github.com/temispremium-cloud/sistema-inventario.git
         cd sistema-inventario
 
 2. Crear y activar el entorno virtual (Windows PowerShell):
