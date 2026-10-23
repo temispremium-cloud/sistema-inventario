@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo_uniguajira.png" alt="Logo Universidad de La Guajira" width="260">
+</p>
+
 # Sistema de Inventario Multialmacén
 
 Proyecto Django del Grupo 1 (Programación Avanzada, Uniguajira). Sistema para controlar los productos que ingresan y salen de las bodegas de una empresa con varios almacenes. Registra artículos, lotes, la ubicación de cada lote (almacén y estante) y cada movimiento de entrada o salida. Toda la información se gestiona desde el panel de administración de Django.
@@ -47,7 +51,7 @@ sistema-inventario/
 ├── lotes/                   # App + modelo Lote
 ├── movimientos/             # App + modelo Movimiento
 ├── detalles_movimiento/     # App + modelo DetalleMovimiento
-├── docs/                    # Diagramas (casos de uso y ER)
+├── docs/                    # Diagramas (casos de uso y ER) y logo
 ├── db.sqlite3               # Base de datos con datos de prueba
 ├── manage.py
 ├── requirements.txt
@@ -71,6 +75,8 @@ El stock no es una columna: se calcula sumando las entradas y restando las salid
   - Las ubicaciones se agregan dentro de cada almacén.
   - Los lotes se agregan dentro de cada artículo.
   - Los detalles (lote y cantidad) se agregan dentro de cada movimiento.
+- Cada lote muestra su **stock actual** y cada artículo su **stock total**, calculados con las entradas y salidas de DetalleMovimiento.
+- No se permite registrar una **salida mayor al stock disponible** del lote: el admin muestra un error de "Stock insuficiente".
 - La base de datos ya incluye 3 registros de prueba por tabla.
 
 ## Requisitos previos

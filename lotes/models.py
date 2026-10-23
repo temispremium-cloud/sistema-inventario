@@ -1,4 +1,6 @@
-﻿from django.db import models
+﻿from django.contrib import admin
+from django.db import models
+from django.db.models import Q, Sum
 
 
 class Lote(models.Model):
@@ -9,3 +11,12 @@ class Lote(models.Model):
 
     def __str__(self):
         return f"Lote {self.codigo} ({self.articulo.nombre})"
+
+    @admin.display(description="Stock actual")
+    def stock_actual(self):
+        # Entradas menos salidas registradas en DetalleMovimiento
+        r = self.detallemovimiento_set.aggregate(
+            entradas=Sum("cantidad", filter=Q(movimiento__tipo="ENTRADA")),
+            salidas=Sum("cantidad", filter=Q(movimiento__tipo="SALIDA")),
+        )
+        return (r["entradas"] or 0) - (r["salidas"] or 0)

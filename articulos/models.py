@@ -1,4 +1,5 @@
-﻿from django.db import models
+﻿from django.contrib import admin
+from django.db import models
 
 
 class Articulo(models.Model):
@@ -9,3 +10,8 @@ class Articulo(models.Model):
 
     def __str__(self):
         return f"{self.codigo} - {self.nombre}"
+
+    @admin.display(description="Stock total")
+    def stock_total(self):
+        # Suma del stock de todos sus lotes
+        return sum(lote.stock_actual() for lote in self.lotes.all())
